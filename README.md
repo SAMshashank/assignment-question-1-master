@@ -1,3 +1,5 @@
+[Live](https://assignment-question-1-master.vercel.app/)
+
 # Instructions
 
 ✅ clone this repo and open with your favorite code editor
@@ -19,6 +21,7 @@
 primaryTitle="Orders"
 secondaryTitle={`${resultsLength} orders`}
 />
+
 </pre>
 
 ![Order 6](https://64cf5c9d29c95431a1fdbd60--soft-kleicha-cd8224.netlify.app/1.png)
@@ -44,11 +47,10 @@ secondaryTitle={`${resultsLength} orders`}
       } else {
         return item;
       }
-    });
-     };
-     const mergedData = mergeDataWithTimestamps();
 
-
+  });
+  };
+  const mergedData = mergeDataWithTimestamps();
 
      </pre>
 
@@ -59,11 +61,9 @@ secondaryTitle={`${resultsLength} orders`}
               onClick: () => handleListItemClick(item["&id"]),
             }))}
 
-
-
      </pre>
 
-     ![photo](https://64cf5c9d29c95431a1fdbd60--soft-kleicha-cd8224.netlify.app/populate1.png)
+  ![photo](https://64cf5c9d29c95431a1fdbd60--soft-kleicha-cd8224.netlify.app/populate1.png)
 
 3.  Order Volume cell is displaying USD values, can you please make it display the currency value selected on the dropdown located in the header of the dashboard
 
