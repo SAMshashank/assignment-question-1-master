@@ -257,7 +257,7 @@ currency={currency}
 searchText={searchText}
 />
 
-<per>```
+<per>
 import React from "react";
 import PropTypes from "prop-types";
 
@@ -324,8 +324,7 @@ fontWeight: "bold",
 
 export default Pagination;
 
-```</per>
+</per>
 
 
-```
-````
+
