@@ -15,21 +15,22 @@
 - Answer
   <per>
 
-````<HeaderTitle
-          primaryTitle="Orders"
-          secondaryTitle={`${resultsLength} orders`}
-        />```
+<HeaderTitle
+primaryTitle="Orders"
+secondaryTitle={`${resultsLength} orders`}
+/>
 </pre>
 
 ![Order 6](https://64cf5c9d29c95431a1fdbd60--soft-kleicha-cd8224.netlify.app/1.png)
 
 2.  In the table order submitted date is missing, we have timestamp data included in the `src\assets\timeStamps.json` with the corresponding ids, please combine that with the order data and make sure the order submitted date is being displayed in the table
------------
 
- - Answer
+---
+
+- Answer
 
   <per>
-     ```  const mergeDataWithTimestamps = () => {
+      const mergeDataWithTimestamps = () => {
       return mockData.results.map((item) => {
         const matchingTimestamp = timestamps.results.find(
         (timestamp) => timestamp["&id"] === item["&id"]
@@ -48,51 +49,51 @@
      const mergedData = mergeDataWithTimestamps();
 
 
-     ```
+
      </pre>
 
      <per>
-     ``` rows={mergedData
+     rows={mergedData
             .map((item, index) => ({
               ...item,
               onClick: () => handleListItemClick(item["&id"]),
             }))}
 
 
-     ```
+
      </pre>
 
      ![photo](https://64cf5c9d29c95431a1fdbd60--soft-kleicha-cd8224.netlify.app/populate1.png)
 
 3.  Order Volume cell is displaying USD values, can you please make it display the currency value selected on the dropdown located in the header of the dashboard
------------
 
-   - Answer
-         <per>
-     ```
-      <Dropdown
-            options={["GBP", "USD", "JPY", "EUR"]}
-            onChange={(e) => setCurrency(e.target.value)}
-            selectedItem={currency}
-          />
-            ```
-     </pre>
+---
 
-          <per>
-     ```
-      <Dropdown
-            options={["GBP", "USD", "JPY", "EUR"]}
-            onChange={(e) => setCurrency(e.target.value)}
-            selectedItem={currency}
-          />
-            ```
-     </pre>
+- Answer
+  <per>
 
+  <Dropdown
+  options={["GBP", "USD", "JPY", "EUR"]}
+  onChange={(e) => setCurrency(e.target.value)}
+  selectedItem={currency}
+  />
 
-     <per>
-     ```
+  </pre>
+
+       <per>
+
+  <Dropdown
+  options={["GBP", "USD", "JPY", "EUR"]}
+  onChange={(e) => setCurrency(e.target.value)}
+  selectedItem={currency}
+  />
+
+  </pre>
+
+  <per>
+
 // in heading
-  <ListHeaderCell>Order Volume / {currency}</ListHeaderCell>
+<ListHeaderCell>Order Volume / {currency}</ListHeaderCell>
 
      <ListRowCell onClick={row.onClick}>
               {currency === "GBP"
@@ -103,36 +104,38 @@
                 ? row.bestExecutionData.orderVolume.EUR
                 : row.bestExecutionData.orderVolume.USD}
             </ListRowCell>
-            ```
+
      </pre>
 
       ![photo](https://64cf5c9d29c95431a1fdbd60--soft-kleicha-cd8224.netlify.app/dropdown.png)
 
 4.  Can you please add search feature on the order IDs with the search bar given in the header
------------
+
+---
 
     - Answer
+
  <per>
-     ```
+    
   <Search
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
           />
-            ```
+           
      </pre>
 
       <per>
-     ```
+
      //In Card component
 
-   const filteredRows = rows.filter((row) =>
-    row["&id"].toLowerCase().includes(searchText.toLowerCase())
-  );
-            ```
+const filteredRows = rows.filter((row) =>
+row["&id"].toLowerCase().includes(searchText.toLowerCase())
+);
+
      </pre>
 
      <per>
-     ```
+
       {filteredRows.map((row, i) => (
           <ListRow key={i}>
             <ListRowCell onClick={row.onClick}>{row["&id"]}</ListRowCell>
@@ -156,28 +159,25 @@
             </ListRowCell>
           </ListRow>
           ))}
-     ```</pre>
+    </pre>
 
 ![photo](https://64cf5c9d29c95431a1fdbd60--soft-kleicha-cd8224.netlify.app/search1.png)
 
 5.  Please clear the console errors and warnings.
------------
+
+---
 
     - Answer
+
 ![photo](https://64cf5c9d29c95431a1fdbd60--soft-kleicha-cd8224.netlify.app/noerrors.png)
 
-
-
-
-
-
 6.  When user selects an order, can you populate the Card on top of the listing component as shown in the image
------------
+
+---
 
     - Answer
 
 ![photo](https://64cf5c9d29c95431a1fdbd60--soft-kleicha-cd8224.netlify.app/populate2.png)
-
 
 ![alt text](dashboard.JPG)
 
@@ -186,15 +186,14 @@
 ✅ run storybook `npm run storybook`
 
 1. Please add storybook to one of the components
-----------
 
- - Answer
+---
 
- ![photo](https://64cf5c9d29c95431a1fdbd60--soft-kleicha-cd8224.netlify.app/pagi.png)
+- Answer
+
+![photo](https://64cf5c9d29c95431a1fdbd60--soft-kleicha-cd8224.netlify.app/pagi.png)
 
     <per>
-     ```
-
 
 import React from "react";
 import { storiesOf } from "@storybook/react";
@@ -202,41 +201,42 @@ import Pagination from "../component/pagination/Pagination";
 
 // Define a function to handle page change in your actual app.
 const handlePageChange = (pageNumber) => {
-  console.log("Page changed to:", pageNumber);
+console.log("Page changed to:", pageNumber);
 };
 
 // Define a Template with args to be used for the 'With Controls' story
 const Template = (args) => <Pagination {...args} />;
 
 storiesOf("Pagination", module)
-  .add("Default", () => (
-    <Pagination
+.add("Default", () => (
+<Pagination
       currentPage={1}
       pageSize={10}
       totalRecords={100}
       onPageChange={handlePageChange}
     />
-  ))
-  .add("With Controls", Template.bind({})) // Use the Template
-  .add("Last Page", () => (
-    <Pagination
+))
+.add("With Controls", Template.bind({})) // Use the Template
+.add("Last Page", () => (
+<Pagination
       currentPage={10}
       pageSize={10}
       totalRecords={100}
       onPageChange={handlePageChange}
     />
-  ));
+));
 
 // Add controls for the 'With Controls' story
 export const WithControls = Template.bind({});
 WithControls.args = {
-  currentPage: 1,
-  pageSize: 10,
-  totalRecords: 100,
-  onPageChange: handlePageChange,
+currentPage: 1,
+pageSize: 10,
+totalRecords: 100,
+onPageChange: handlePageChange,
 };
-       ```
+
      </pre>
+
 ````
 
 ### Extra Added
@@ -328,3 +328,4 @@ export default Pagination;
 
 
 ```
+````
