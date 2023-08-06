@@ -237,7 +237,7 @@ onPageChange: handlePageChange,
 
      </pre>
 
-````
+
 
 ### Extra Added
 
